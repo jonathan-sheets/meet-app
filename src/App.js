@@ -10,9 +10,9 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
-    numberOfEvents: 24,
+    eventCount: 24,
     currentLocation: 'all',
-  };
+  }
 
   // updateEvents = (location, eventCount) => {
   //   const { currentLocation, numberOfEvents } = this.state;
@@ -90,7 +90,7 @@ class App extends Component {
     return (
       <div className="App">
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-        <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEvents={this.updateEvents} />
+        <NumberOfEvents updateEvents={this.updateEvents} />
         <EventList events={this.state.events} />
       </div>
     );
