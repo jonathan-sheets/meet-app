@@ -10,11 +10,13 @@ const feature = loadFeature('./src/features/filterEventsByCity.feature');
 const locations = extractLocations(mockData);
 
 defineFeature(feature, test => {
+  let AppWrapper;
+  
   test('When user hasn\'t searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
     given('user hasn\'t searched for any city', () => {
 
     });
-    let AppWrapper;
+    
     when('the user opens the app', () => {
       AppWrapper = mount(<App />);
     });
