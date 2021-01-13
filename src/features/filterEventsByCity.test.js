@@ -11,12 +11,12 @@ const locations = extractLocations(mockData);
 
 defineFeature(feature, test => {
   let AppWrapper;
-  
-  test('When user hasn\'t searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
-    given('user hasn\'t searched for any city', () => {
+
+  test("When user hasn't searched for a city, show upcoming events from all cities.", ({ given, when, then }) => {
+    given("user hasn't searched for any city", () => {
 
     });
-    
+
     when('the user opens the app', () => {
       AppWrapper = mount(<App />);
     });
@@ -37,7 +37,7 @@ defineFeature(feature, test => {
       CitySearchWrapper.find('.city').simulate('change', { target: { value: 'Berlin' } });
     });
 
-    then('the user should receive a list of cities (suggestions) that match what they\'ve typed', () => {
+    then("the user should receive a list of suggestions that match what they typed", () => {
       expect(CitySearchWrapper.find('.suggestions li')).toHaveLength(2);
     });
   });
@@ -54,11 +54,11 @@ defineFeature(feature, test => {
       expect(AppWrapper.find('.suggestions li')).toHaveLength(2);
     });
 
-    when('the user selects a city (e.g., "Berlin, Germany") from the list', () => {
+    when('the user selects a city e.g., "Berlin, Germany" from the list', () => {
       AppWrapper.find('.suggestions li').at(0).simulate('click');
     });
 
-    then('their city should be changed to that city (i.e., "Berlin, Germany")', () => {
+    then('their city should be changed to that city i.e., "Berlin, Germany"', () => {
       const CitySearchWrapper = AppWrapper.find(CitySearch);
       expect(CitySearchWrapper.state('query')).toBe('Berlin, Germany');
     });
