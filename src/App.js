@@ -6,6 +6,8 @@ import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from './api';
 import './nprogress.css';
 import { WarningAlert } from './Alert';
+import EventGenre from './EventGenre';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 class App extends Component {
   state = {
@@ -68,8 +70,18 @@ class App extends Component {
     }
   };
 
+  getData = () => {
+    const {locations, events} = this.state;
+    const data = locations.map((location) => {
+      const number = events.filter((event) => event.location === location).length
+      const city = location.split(',').shift()
+      return {city, number};
+    })
+    return data;
+  };
+
   render() {
-    const { numberOfEvents } = this.state;
+    const { numberOfEvents, events } = this.state;
     return (
       <div className="App">
         <div className="offlineAlert">
@@ -77,6 +89,22 @@ class App extends Component {
         </div>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <NumberOfEvents numberOfEvents={numberOfEvents} updateEvents={this.updateEvents} />
+
+        <h4>Events in each city</h4>
+        <div className="data-vis-wrapper">
+          <EventGenre events={events} />
+          <ResponsiveContainer height={400} >
+            <ScatterChart
+              margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+            >
+              <CartesianGrid />
+              <XAxis type="category" dataKey="city" name="City" />
+              <YAxis type="number" dataKey="number" name="Number of events" allowDecimals={false} />
+              <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+              <Scatter data={this.getData()} fill="#8884d8" />
+            </ScatterChart>
+          </ResponsiveContainer>
+        </div>
         <EventList events={this.state.events} />
       </div>
     );
