@@ -5,6 +5,7 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from './api';
 import './nprogress.css';
+import { WarningAlert } from './Alert';
 
 class App extends Component {
   state = {
@@ -12,21 +13,9 @@ class App extends Component {
     locations: [],
     numberOfEvents: 24,
     currentLocation: 'all',
+    infoText: ''
   };
 
-  // componentDidMount() {
-  //   this.mounted = true;
-  //   getEvents().then((events) => {
-  //     if (this.mounted) {
-  //       this.setState({ 
-  //         events: events,
-  //         locations: extractLocations(events),
-  //         numberOfEvents: 24
-  //       });
-  //     }
-  //   });
-  // }
-  
   componentDidMount() {
     this.mounted = true;
     getEvents().then((events) => {
@@ -36,6 +25,12 @@ class App extends Component {
         this.setState({ 
           events: filteredEvents,
           locations: extractLocations(events),
+        });
+      }
+
+      if (!navigator.onLine) {
+        this.setState({
+          infoText: 'You are currently offline and the list of events may not be accurate.  Please relaunch the app once online to view up-to-date events.'
         });
       }
     });
@@ -77,6 +72,9 @@ class App extends Component {
     const { numberOfEvents } = this.state;
     return (
       <div className="App">
+        <div className="offlineAlert">
+          <WarningAlert text={this.state.infoText} />
+        </div>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <NumberOfEvents numberOfEvents={numberOfEvents} updateEvents={this.updateEvents} />
         <EventList events={this.state.events} />
