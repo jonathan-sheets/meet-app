@@ -56,6 +56,13 @@ const checkToken = async (accessToken) => {
      return parsedEvents;
    }
 
+   if (!navigator.onLine) {
+     const events = localStorage.getItem("lastEvents");
+     const parsedLocations = extractLocations(JSON.parse(events).events)
+     NProgress.done();
+     return parsedLocations;
+   }
+
    const token = await getAccessToken();
 
    if (token) {
