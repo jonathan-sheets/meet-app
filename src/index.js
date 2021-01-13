@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import * as atatus from 'atatus-spa';
 
 ReactDOM.render(
@@ -19,3 +20,4 @@ reportWebVitals();
 
 atatus.config('eb6c018250aa4416a6f92e67cb039f18').install();
 // atatus.notify(new Error('Test Atatus Setup'));
+serviceWorkerRegistration.register();
