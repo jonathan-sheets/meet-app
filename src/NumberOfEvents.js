@@ -27,8 +27,10 @@ class NumberOfEvents extends Component {
   render() {
     return (
       <div className="number-of-events">
+        <div className="error-alert">
         <ErrorAlert text={this.state.infoText} />
-        <label className="number-of-events-label">Maximum Number of Events To Display:</label>
+        </div>
+        <h3 className="number-of-events-label">Number of Events To Display:</h3>
           <input 
             type="number"
             className="events-number"

@@ -2,6 +2,7 @@
 .App {
   text-align: center;
   padding: 2% 5%;
+  background-image: linear-gradient(to right, #13a2ff, #b6b8b9);
 }
 
 .App * {
@@ -26,10 +27,11 @@ p {
 
 input[type="text"],
 input[type="number"] {
+  background-color: lightcyan;
   padding: 8px 6px 8px 10px;
   border-radius: 4px;
   outline: none;
-  border: 1px solid #ccc;
+  border: 1px solid black;
   font-size: 14px;
   line-height: 20px;
   align-self: center;
@@ -38,10 +40,13 @@ input[type="number"] {
 
 .city {
   width: 250px;
+  margin-top: -10px;
 }
 
 .CitySearch {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   flex-basis: 300px;
   max-width: 300px;
@@ -49,13 +54,39 @@ input[type="number"] {
   position: relative;
 }
 
+.Alert {
+  position: fixed;
+  top: 3px;
+  /* margin-top: -15px; */
+}
+.info-alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+.error-alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  /* margin-bottom: 25px; */
+}
+.offlineAlert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  /* margin-bottom: 25px; */
+}
+
 .suggestions {
   width: 250px;
-  position: absolute;
-  z-index: 2;
+  position: relative;
+  z-index: 5;
   align-self: center;
-  margin: 0;
-  top: 43px;
+  margin: 4px;
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
 }
@@ -63,8 +94,8 @@ input[type="number"] {
 .suggestions > li {
   text-align: left;
   padding: 8px 6px 8px 10px;
-  background-color: #eee;
-  cursor: default;
+  background-color: lightcyan;
+  cursor: pointer;
 }
 
 .suggestions > li:last-child {
@@ -73,26 +104,83 @@ input[type="number"] {
 }
 
 .suggestions > li:hover {
-  background-color: #bcdcdb;
+  background-color: #a6cfe7;
+}
+
+.events-number {
+  width: 80px;
+  margin-top: -10px;
+  /* margin-bottom: 10px; */
+}
+
+.recharts-legend-item {
+  font-weight: 650;
+  margin-left: 5px;
+  margin-top: 10px;
+}
+
+.recharts-pie-sector > path {
+  stroke: #616161;
+}
+
+.recharts-text {
+  font-weight: 600;
+}
+
+.recharts-cartesian-axis-line {
+  stroke: black;
+}
+
+.recharts-cartesian-grid-horizontal > line {
+  stroke: #cdcfd2;
+}
+
+.recharts-cartesian-grid-vertical > line {
+  stroke: #cdcfd2;
+}
+
+.recharts-scatter-symbol > path {
+  fill: #92f4f0;
+}
+
+.recharts-layer > text {
+  fill: #14171d;
 }
 
 .event {
-  padding: 10px 10px 35px;
+  padding-top: 8px;
+  padding-left: 10px;
+  padding-bottom: 30px;
+  padding-right: 10px;
   margin-bottom: 10px;
   text-align: left;
-  border: 1px solid #ccc;
+  border: 1px solid #616161;
   border-radius: 4px;
   position: relative;
 }
 
-.details-btn {
-  position: absolute;
-  right: 5px;
-  bottom: 5px;
+.details-button {
   padding: 5px 8px;
   border-radius: 4px;
-  outline: none;
+  background-color: lightskyblue;
+  margin-top: 10px;
+  margin-bottom: -10px;
   cursor: pointer;
+}
+.details-button:hover {
+  background-color: #cdcfd2;
+}
+
+.see-details {
+  padding: 5px 8px;
+  border-radius: 4px;
+  background-color: lightskyblue;
+  margin-top: -10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+.see-details:hover {
+  background-color: #cdcfd2;
 }
 
 .name {
@@ -126,11 +214,6 @@ input[type="number"] {
   grid-gap: 20px;
   padding: 20px;
   font-family: sans-serif;
-}
-
-.Alert {
-  position: fixed;
-  top: 20px;
 }
 
 .data-vis-wrapper {
@@ -198,8 +281,6 @@ input[type="number"] {
   font-family: "Roboto";
 }
 
-
-
 @media only screen and (min-width: 992px) {
   .data-vis-wrapper {
     flex-direction: row;
@@ -209,5 +290,31 @@ input[type="number"] {
     max-width: 50%;
     min-width: auto;
     margin: 0 auto;
+  }
+}
+/* @media only screen and (max-width: 992px) {
+  .data-vis-wrapper {
+    flex-direction: column;
+  }
+  .recharts-responsive-container {
+    margin-right: 10px;
+  }
+} */
+
+@media only screen and (min-width: 992px) {
+  .EventList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .event {
+    width: 400px;
+    min-height: 250px;
+    padding-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 }

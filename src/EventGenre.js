@@ -16,19 +16,17 @@ const EventGenre = ({ events }) => {
     return data;
   };
 
-  // const colors = ["#5213b9", "#02cb25", "#ffd402", "#ff7202", "#01a7a7"];
-  const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#85D2DB"];
+  const colors = ["#8c4bc3", "#47d16b", "#ffc668", "#e571b3", "#92f4f0"];
 
   return (
     <ResponsiveContainer height={400} >
       <PieChart width={400} height={400}>
         <Pie
           data={data}
-          cx={200}
-          cy={200}
+          // cx={200}
+          // cy={200}
           labelLine={false}
-          outerRadius={140}
-          fill="#8884d8"
+          outerRadius={110}
           dataKey="value"
           label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
         >
@@ -40,7 +38,7 @@ const EventGenre = ({ events }) => {
         </Pie>
         <Legend 
           verticalAlign="top" 
-          align="left"
+          // align="center"
           iconType="line"
           />
       </PieChart>

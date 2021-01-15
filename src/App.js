@@ -32,7 +32,7 @@ class App extends Component {
 
       if (!navigator.onLine) {
         this.setState({
-          infoText: 'You are currently offline and the list of events may not be accurate.  Please relaunch the app once online to view up-to-date events.'
+          infoText: 'You are currently offline.  The list of events may not be up-to-date.'
         });
       }
     });
@@ -95,17 +95,19 @@ class App extends Component {
           <EventGenre events={events} />
           <ResponsiveContainer height={400} >
             <ScatterChart
-              margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+              margin={{ top: 20, right: 20, bottom: 20, left: -20 }}
             >
               <CartesianGrid />
               <XAxis type="category" dataKey="city" name="City" />
               <YAxis type="number" dataKey="number" name="Number of events" allowDecimals={false} />
               <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-              <Scatter data={this.getData()} fill="#8884d8" />
+              <Scatter data={this.getData()} />
             </ScatterChart>
           </ResponsiveContainer>
         </div>
+        <div className="events-list">
         <EventList events={this.state.events} />
+        </div>
       </div>
     );
   }
