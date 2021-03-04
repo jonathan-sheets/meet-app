@@ -1,4 +1,14 @@
-# Getting Started with Create React App
+# Meet App
+
+<img src="meet_app.gif" alt="Meet App video demo">
+
+This progressive web app allows users to view and sign up for web development events provided by an external calendar.  Users can filter events by location, change the number of events displayed, view/hide event details, and see event details on Google Calendar.  The app includes serverless authentication via AWS Lambda and utilizes the Google Calendar API.  Unit, integration, and end-to-end testing is done using Jest-Cucumber, Enzyme, and Puppeteer.  Data visualization is done using the Recharts library.  The app is also functional offline and will load previously loaded events from the devices local storage.
+
+## Use It Live Here
+
+[Meet App](https://jonathan-sheets.github.io/meet-app/)
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
